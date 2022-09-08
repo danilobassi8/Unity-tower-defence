@@ -5,22 +5,25 @@ using UnityEngine;
 public class WaveSpawner : MonoBehaviour {
     public Transform enemyPrefab;
     public Transform spawnPoint;
-
     public float timeBetweenWaves = 5f;
+    public float timeBetweenEnemiesInSameWave = 0.3f;
+
     private float countdown = 2f;
     private int waveIndex = 0;
 
     private void Update() {
         countdown -= Time.deltaTime;
         if (countdown <= 0) {
-            SpawnWave();
+            StartCoroutine(SpawnWave());
+            countdown = timeBetweenWaves;
         }
     }
 
-    void SpawnWave() {
-        for (int i = 0; i < waveIndex++; i++) {
-            Debug.Log("Spawning enemy");
+    IEnumerator SpawnWave() {
+        waveIndex++;
+        for (int i = 0; i < waveIndex; i++) {
             SpawnEnemy();
+            yield return new WaitForSeconds(timeBetweenEnemiesInSameWave);
         }
     }
 
