@@ -44,6 +44,10 @@ public class Turret : MonoBehaviour {
     }
 
     private void FireLogic() {
+        if (Vector3.Distance(transform.position, target.position) > range) {
+            return;
+        }
+
         if (fireCountdown <= 0f) {
             Shoot();
             fireCountdown = 1f / fireRate;
@@ -54,7 +58,6 @@ public class Turret : MonoBehaviour {
     private void Shoot() {
         GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Bullet bulletScript = bulletGO.GetComponent<Bullet>();
-        Debug.Log(bulletScript);
         if (bulletGO != null) {
             bulletScript.Seek(target);
         }

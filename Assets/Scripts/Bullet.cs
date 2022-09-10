@@ -38,7 +38,8 @@ namespace Assets.Scripts {
         }
 
         void HitTarget() {
-            var effectsGO = (GameObject)Instantiate(effects, transform.position, transform.rotation);
+
+            var effectsGO = (GameObject)Instantiate(effects, transform.position, Quaternion.Euler(new Vector3(-90, 0, 0)));
             Destroy(effectsGO, 3f);
             Destroy(gameObject);
         }

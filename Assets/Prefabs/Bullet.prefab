@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 70
-  effects: {fileID: 4521742384567959228, guid: d0f8e685113f6884687485b240e295f6, type: 3}
+  effects: {fileID: 2002419988542937918, guid: d0f8e685113f6884687485b240e295f6, type: 3}
 --- !u!1 &8281081927357036734
 GameObject:
   m_ObjectHideFlags: 0
